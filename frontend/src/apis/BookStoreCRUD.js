@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'https://mundolector-dw-b43-c4.herokuapp.com/';
+const baseURL = 'http://localhost:5000';
 
 export function getAllBooks(callback) {
   return axios.get(`${baseURL}/books`)
@@ -52,3 +52,23 @@ export function deleteBook(id, callback) {
         console.log(error);
     });
 }   
+
+export function updateBook(id, book, callback) {
+    axios.put(baseURL + '/books/' +id, book)
+    .then((response) => {
+        callback(response);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+}
+
+export function getBook(id, callback) {
+    return axios.get(`${baseURL}/books/` + id)
+      .then(response => {
+          callback(response.data);
+      })
+      .catch(error => {
+          console.log(error);
+      });
+  }

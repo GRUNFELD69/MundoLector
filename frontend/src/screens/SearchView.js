@@ -7,6 +7,7 @@ import AxiosComponent from "../components/AxiosComponent";
 const SearchView = () => {
   var user = JSON.parse(localStorage.getItem("user"));
   const category = localStorage.getItem("category");
+  localStorage.removeItem('category');
 
   if (user == null) {
     return <Navigate to="/" />;
