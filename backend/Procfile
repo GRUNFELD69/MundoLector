@@ -1,1 +1,1 @@
-web: npm run status
+web: npm run start
