@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:5000';
+const baseURL = 'https://mundolector-dw-b43-c4.herokuapp.com/';
 
 export function getAllBooks(callback) {
   return axios.get(`${baseURL}/books`)
