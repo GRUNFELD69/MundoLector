@@ -1,0 +1,31 @@
+{
+  "name": "backend_mundolector",
+  "version": "1.0.0",
+  "description": "Archivos para la contruccion de una pagina Web para gestion de libros ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "MiNTIC",
+    "Libro",
+    "Autor",
+    "e-commerce",
+    "Editorial",
+    "ciclo 4",
+    "Precio"
+  ],
+  "author": "Grupo 5 B43",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "firebase-admin": "^10.0.0"
+  },
+  "engines": {
+    "node":"14.x"
+  }
+}
