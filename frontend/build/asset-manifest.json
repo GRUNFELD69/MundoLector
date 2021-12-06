@@ -1,31 +1,26 @@
 {
   "files": {
-    "main.js": "/static/js/main.a97ef286.chunk.js",
-    "main.js.map": "/static/js/main.a97ef286.chunk.js.map",
+    "main.js": "/static/js/main.945f2b77.chunk.js",
+    "main.js.map": "/static/js/main.945f2b77.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.ff5b8ea4.js",
     "runtime-main.js.map": "/static/js/runtime-main.ff5b8ea4.js.map",
     "static/css/2.383c0125.chunk.css": "/static/css/2.383c0125.chunk.css",
-    "static/js/2.41db7fa8.chunk.js": "/static/js/2.41db7fa8.chunk.js",
-    "static/js/2.41db7fa8.chunk.js.map": "/static/js/2.41db7fa8.chunk.js.map",
+    "static/js/2.7fdac41e.chunk.js": "/static/js/2.7fdac41e.chunk.js",
+    "static/js/2.7fdac41e.chunk.js.map": "/static/js/2.7fdac41e.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.383c0125.chunk.css.map": "/static/css/2.383c0125.chunk.css.map",
-    "static/js/2.41db7fa8.chunk.js.LICENSE.txt": "/static/js/2.41db7fa8.chunk.js.LICENSE.txt",
+    "static/js/2.7fdac41e.chunk.js.LICENSE.txt": "/static/js/2.7fdac41e.chunk.js.LICENSE.txt",
     "static/media/Atlantis.2562385a.jpg": "/static/media/Atlantis.2562385a.jpg",
     "static/media/DejemosHuella.4fd3e41e.jpg": "/static/media/DejemosHuella.4fd3e41e.jpg",
-    "static/media/Fausto.a29c4d3b.jpg": "/static/media/Fausto.a29c4d3b.jpg",
-    "static/media/LaNinaQueBebioLuzdeLuna.5394c576.jpg": "/static/media/LaNinaQueBebioLuzdeLuna.5394c576.jpg",
-    "static/media/LaSemillaFeliz.d42e647b.jpg": "/static/media/LaSemillaFeliz.d42e647b.jpg",
-    "static/media/el-dia-que-se-perdio-la-cordura.1ba33746.jpg": "/static/media/el-dia-que-se-perdio-la-cordura.1ba33746.jpg",
     "static/media/elquintoinfierno.69acbc5b.jpg": "/static/media/elquintoinfierno.69acbc5b.jpg",
     "static/media/lanzamiento-libro3.7f0d8d19.png": "/static/media/lanzamiento-libro3.7f0d8d19.png",
     "static/media/lanzamiento-libro4.54573e84.png": "/static/media/lanzamiento-libro4.54573e84.png",
-    "static/media/photo_LAQ.d7040517.jpg": "/static/media/photo_LAQ.d7040517.jpg",
-    "static/media/todas-las-hadas-del-reino.11637c34.jpg": "/static/media/todas-las-hadas-del-reino.11637c34.jpg"
+    "static/media/photo_LAQ.d7040517.jpg": "/static/media/photo_LAQ.d7040517.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.ff5b8ea4.js",
     "static/css/2.383c0125.chunk.css",
-    "static/js/2.41db7fa8.chunk.js",
-    "static/js/main.a97ef286.chunk.js"
+    "static/js/2.7fdac41e.chunk.js",
+    "static/js/main.945f2b77.chunk.js"
   ]
 }

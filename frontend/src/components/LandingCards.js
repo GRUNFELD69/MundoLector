@@ -17,7 +17,7 @@ const LandingCards = () => {
                                 <Card.Text>
                                 La trama empieza con el descubrimiento de seis pergaminos del antiguo Egipto; el séptimo se encontró más tarde. Caen en manos de Platón y éste, ayudado por su discípulo Aristóteles, transcribe los seis al griego.
                                 </Card.Text>
-                                <Button href="/select" variant="primary">Leer mas</Button>
+                                <Button variant="primary">Leer mas</Button>
                             </Card.Body>
                         </Card>
                     </Col>
@@ -29,7 +29,7 @@ const LandingCards = () => {
                                 <Card.Text>
                                 A través de las historias de diez organizaciones o ciudadanos en teoría “comunes”, el libro retrata la mejor esencia de los costarricenses, esos que rasgaron sus viejas vestiduras para ataviarse con la proactividad, la inteligencia emocional, el buen orgullo, la cooperación, la solidaridad, la disciplina y la templanza
                                 </Card.Text>
-                                <Button href="/select" variant="primary">Leer mas</Button>
+                                <Button variant="primary">Leer mas</Button>
                             </Card.Body>
                         </Card>
                     </Col>
@@ -41,7 +41,7 @@ const LandingCards = () => {
                                 <Card.Text>
                                 Los hermanos irlandeses Connor y Murphy McManus viven y trabajan en Boston hasta que se convierten, por casualidad, en los santos de un barrio de la ciudad al matar a unos mafiosos rusos. Ahora deberán acabar con toda la escoria de la ciudad.
                                 </Card.Text>
-                                <Button href="/select" variant="primary">Leer mas</Button>
+                                <Button variant="primary">Leer mas</Button>
                             </Card.Body>
                         </Card>
                     </Col>                    

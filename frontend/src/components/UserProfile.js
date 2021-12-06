@@ -1,20 +1,26 @@
-import React from 'react'
-import { Card, Button, Row, Container, Col, ListGroup } from 'react-bootstrap'
-import Atlantis from '../assets/img/portadas/Atlantis.jpg';
-import DejemosHuella from '../assets/img/portadas/DejemosHuella.jpg';
-import ElQuintoInfierno from '../assets/img/portadas/elquintoinfierno.jpg';
-import Fausto from '../assets/img/portadas/Fausto.jpg';
-import LaNinaQueBebioLuzdeLuna from '../assets/img/portadas/LaNinaQueBebioLuzdeLuna.jpg';
-import TodasLasHadasdelReino from '../assets/img/portadas/todas-las-hadas-del-reino.jpg';
-import LaSemillaFeliz from '../assets/img/portadas/LaSemillaFeliz.jpg';
-import ElDiaQueSePerdioLaCordura from '../assets/img/portadas/el-dia-que-se-perdio-la-cordura.jpg';
+import React, { useState, useEffect } from 'react'
+import { Card, Button, Row, Container, Col, ListGroup, ToggleButtonGroup, ToggleButton } from 'react-bootstrap'
+import { getAllBooks } from '../apis/BookStoreCRUD';
 
 const UserProfile = () => {
+
+    const [bookcollection, setSearchResults] = useState([]);
+    const [valueBook, setValueBook] = useState([]);
+
+    useEffect(() => {
+        getAllBooks(setSearchResults);
+    }, []);
 
     function handleAdmin() {
         localStorage.setItem('TabAdmin', 'libros');
         window.location.href = '/adminprofile';
     }
+
+    const handleReadBook = (val) => {
+        setValueBook(val);
+        localStorage.setItem("tittle", val.Titulo);
+        window.location.href = '/select';
+    }    
 
     return (
         <>
@@ -48,99 +54,28 @@ const UserProfile = () => {
                                 <ListGroup.Item>Nombre: Luis Quiroz</ListGroup.Item>
                                 <ListGroup.Item>Edad: 51</ListGroup.Item>
                                 <ListGroup.Item>Rol: Cliente</ListGroup.Item>
-                                <ListGroup.Item>Teléfono: 3008679733</ListGroup.Item>
+                                <ListGroup.Item>Teléfono: 3008679755</ListGroup.Item>
                             </ListGroup>
                         </Row>
                     </Col>
                     <Col sm={10}>
                         <Row>
                             <h5>Recomendados</h5>
-                            <Col sm={3} >
-                                <Card style={{ width: '12rem' }}>
-                                    <Card.Img variant="top" src={Atlantis} />
-                                    <Card.Body>
-                                        <Card.Title>Categoría</Card.Title>
-                                        <Card.Subtitle className="mb-2 text-muted">ciencia Ficción</Card.Subtitle>
-                                        <Button href="/select" variant="primary">Leer mas</Button>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col sm={3} >
-                                <Card style={{ width: '12rem' }}>
-                                    <Card.Img variant="top" src={DejemosHuella} />
-                                    <Card.Body>
-                                        <Card.Title>Categoría</Card.Title>
-                                        <Card.Subtitle className="mb-2 text-muted">Documental</Card.Subtitle>
-                                        <Button href="/select" variant="primary">Leer mas</Button>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col sm={3} >
-                                <Card style={{ width: '12rem' }}>
-                                    <Card.Img variant="top" src={ElQuintoInfierno} />
-                                    <Card.Body>
-                                        <Card.Title>Categoria</Card.Title>
-                                        <Card.Subtitle className="mb-2 text-muted">Suspenso</Card.Subtitle>
-                                        <Button href="/select" variant="primary">Leer mas</Button>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col sm={3} >
-                                <Card style={{ width: '12rem' }}>
-                                    <Card.Img variant="top" src={Fausto} />
-                                    <Card.Body>
-                                        <Card.Title>Categoria</Card.Title>
-                                        <Card.Subtitle className="mb-2 text-muted">Literatura Universal</Card.Subtitle>
-                                        <Button href="/select" variant="primary">Leer mas</Button>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
+                            {bookcollection.map((result, index) => (
+                                <Col sm={3} key={result.id}>
+                                    <Card style={{ width: '12rem' }}>
+                                        <Card.Img variant="top" src={result.photoPortada} />
+                                        <Card.Body>
+                                            <Card.Title>Categoría</Card.Title>
+                                            <Card.Subtitle className="mb-2 text-muted">{result.Categoria}</Card.Subtitle>
+                                            <ToggleButtonGroup name="radioReadBooks" type="radio" value={valueBook} onChange={handleReadBook}>
+                                                <ToggleButton name={"read" + result.Titulo} id={"read" + result.id + result.Titulo} value={result} variant="success" >Leer mas</ToggleButton>
+                                            </ToggleButtonGroup>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                            ))}
                         </Row>
-                        <br />
-                        <Row>
-                            <h5>Los mas vistos</h5>
-                            <Col sm={3} >
-                                <Card style={{ width: '12rem' }}>
-                                    <Card.Img variant="top" src={LaNinaQueBebioLuzdeLuna} />
-                                    <Card.Body>
-                                        <Card.Title>Categoría</Card.Title>
-                                        <Card.Subtitle className="mb-2 text-muted">Novela</Card.Subtitle>
-                                        <Button href="/select" variant="primary">Leer mas</Button>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col sm={3} >
-                                <Card style={{ width: '12rem' }}>
-                                    <Card.Img variant="top" src={TodasLasHadasdelReino} />
-                                    <Card.Body>
-                                        <Card.Title>Categoría</Card.Title>
-                                        <Card.Subtitle className="mb-2 text-muted">Novela</Card.Subtitle>
-                                        <Button href="/select" variant="primary">Leer mas</Button>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col sm={3} >
-                                <Card style={{ width: '12rem' }}>
-                                    <Card.Img variant="top" src={LaSemillaFeliz} />
-                                    <Card.Body>
-                                        <Card.Title>Categoria</Card.Title>
-                                        <Card.Subtitle className="mb-2 text-muted">Drama</Card.Subtitle>
-                                        <Button href="/select" variant="primary">Leer mas</Button>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col sm={3} >
-                                <Card style={{ width: '12rem' }}>
-                                    <Card.Img variant="top" src={ElDiaQueSePerdioLaCordura} />
-                                    <Card.Body>
-                                        <Card.Title>Categoria</Card.Title>
-                                        <Card.Subtitle className="mb-2 text-muted">Humor</Card.Subtitle>
-                                        <Button href="/select" variant="primary">Leer mas</Button>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        </Row>
-
                     </Col>
                 </Row>
             </Container>
