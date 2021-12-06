@@ -10,6 +10,12 @@ import LaSemillaFeliz from '../assets/img/portadas/LaSemillaFeliz.jpg';
 import ElDiaQueSePerdioLaCordura from '../assets/img/portadas/el-dia-que-se-perdio-la-cordura.jpg';
 
 const UserProfile = () => {
+
+    function handleAdmin() {
+        localStorage.setItem('TabAdmin', 'libros');
+        window.location.href = '/adminprofile';
+    }
+
     return (
         <>
             <br />
@@ -18,7 +24,7 @@ const UserProfile = () => {
                     <Col sm={2}>
                         <Row>
                             <ListGroup>
-                                <Button href="/adminprofile" variant="secondary">Soy Admin</Button>
+                                <Button variant="secondary" onClick={handleAdmin}>Soy Admin</Button>
                                 <br />
                                 <ListGroup.Item variant="secondary">Mis Pedidos</ListGroup.Item>
                                 <ListGroup.Item>La Maria</ListGroup.Item>

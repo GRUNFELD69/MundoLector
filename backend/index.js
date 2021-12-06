@@ -8,10 +8,9 @@ app.use(cors());
 
 routerAPI(app);
 
-app.listen(app.get('port'),()=>{
-  console.log(`Server on port ${app.get('port')}`);
+app.listen(app.get('port'), () => {
+    console.log(`Server on port ${app.get('port')}`);
 });
-
  
 app.get('/', function (req, res) {
   res.send('Backend mundolector MiNTIC')

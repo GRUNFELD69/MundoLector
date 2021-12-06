@@ -4,6 +4,14 @@ const routerUser = express.Router();
 
 /* Funciones para usuarios */
 
+routerUser.get('/', (req, res) => {
+    dbUsers.getUsers((users) => {
+        console.log("voy aqui");
+        console.log(users);
+        res.send(users);
+    });
+})
+
 routerUser.get('/:id',(req,res)=>{
     dbUsers.getUser(req.params.id, (user) => {
         res.send(user);
@@ -30,8 +38,8 @@ routerUser.delete('/:id', (req, res) => {
     })
 })
 
-routerUser.get('/search/username/:username', (req, res) => {  
-    const name = String(req.params.username);
+routerUser.get('/search/:nombreUsuario', (req, res) => {  
+    const name = String(req.params.nombreUsuario);
     dbUsers.searchUser(name, (response) => {
         res.send(response);
     })

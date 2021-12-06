@@ -6,7 +6,6 @@ import { getBooksCategory } from "../apis/BookStoreCRUD";
 
 const AxiosComponent = (props) => {
 
- console.log(props.category);
   const [bookResults, setSearchResults] = useState([]);
 
   useEffect(() => {

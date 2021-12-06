@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Form, Button, Stack, ButtonGroup } from 'react-bootstrap'
-import { addBook, updateBook, getBook } from '../apis/BookStoreCRUD'
+import { addBook, updateBook } from '../apis/BookStoreCRUD'
+import { getAllCategories } from "../apis/CategoryCRUD";
+
+
 //import { Save2 } from 'react-bootstrap-icons';
 
 const BookDetails = (props) => {
     const [bookActions, setSearchResults] = useState(props.book);
-    const [category, setCategory] = useState(props.book.Categoria);
+    const [categorylist, getCategories] = useState([{Nombre: 'Default'}]);
 
     useEffect(() => {
-        setSearchResults(props.book);
-        setCategory(props.book.Categoria);
+        //setSearchResults(props.book);
+         getAllCategories(getCategories);
         //getBook(props.book.id, setSearchResults);
     }, []);
 
@@ -27,7 +30,6 @@ const BookDetails = (props) => {
 
     function handleCategory(e, campo) {
         e.preventDefault();
-        setCategory(e.target.value);
         cambiarUser(campo, e.target.value);
     };
 
@@ -89,11 +91,13 @@ const BookDetails = (props) => {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="book.Category">
                                 <Form.Label>Categoria</Form.Label>
-                                <Form.Select value={category} onChange={(e) => handleCategory(e, "Categoria")}>
-                                    <option value="Novela">Novela</option>
-                                    <option value="Ciencia">Ciencia</option>
-                                    <option value="Suspenso">Suspenso</option>
-                                    <option value="Ciencia Ficcion">Ciencia Ficcion</option>
+                                <Form.Select value={bookActions.Categoria} onChange={(e) => handleCategory(e, "Categoria")}>
+                                    {categorylist.map((item, index) => {
+                                        return (
+                                            <option key={item.Nombre + index} value={item.Nombre}>{item.Nombre}</option>
+                                        );
+                                    })
+                                    };
                                 </Form.Select>
                             </Form.Group>
                             <Form.Group as={Col} controlId="book.Publication">

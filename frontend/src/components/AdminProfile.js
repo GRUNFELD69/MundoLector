@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import { Form, Button, Row, Col, Container, Figure, Stack, Tabs, Tab, } from 'react-bootstrap'
+import { Button, Row, Col, Container, Figure, Stack, Tabs, Tab, } from 'react-bootstrap'
 import photo_LAQ from '../assets/img/photo_LAQ.jpg';
 import { getAllBooks, deleteBook } from '../apis/BookStoreCRUD';
 import ModalBook from './ModalBooks.js';
 import TabBooks from './TabBooks';
 import TabAdminProfile from './TabAdminProfile';
+import TabCategories from './TabCategories';
+import TableUsers from './TableUsers';
 
 
 const AdminProfile = () => {
 
+    var Tabstate = localStorage.getItem('TabAdmin');
+
     const [bookcollection, setSearchResults] = useState([]);
     const [value, setValue] = useState([]);
     const [show, setShow] = useState(false);
-
+    const [keyTab, setKeyTab] = useState(Tabstate);
 
     const handleChange = (val) => {
         setValue(val);
@@ -29,6 +33,9 @@ const AdminProfile = () => {
         setShow(false);
     }
 
+    const adminRequest = (peticion) => {
+        localStorage.setItem('adminRequest', peticion);
+    };
 
     const delBook = (id) => {
         setShow(false);
@@ -44,6 +51,11 @@ const AdminProfile = () => {
         );
         window.location.reload();
     };
+
+    function handleKeyTab(e) {
+        setKeyTab(e);
+        localStorage.setItem('TabAdmin', e);
+    }
 
     useEffect(() => {
         getAllBooks(setSearchResults);
@@ -73,7 +85,7 @@ const AdminProfile = () => {
                             </div>
                             <Stack gap={2} className="col-md-5 mx-auto">
                                 <Button href="/bookfunctions" variant="secondary">Libro</Button>
-                                <Button variant="secondary">Usuario</Button>
+                                <Button href="/customerprofile" variant="secondary" onClick={() => adminRequest("newUser")}>Usuario</Button>
                                 <Button href="/userhome" variant="outline-secondary">Salir</Button>
                             </Stack>
                         </Row>
@@ -82,12 +94,20 @@ const AdminProfile = () => {
                         <br />
                         <Row>
                             <Container>
-                                <Tabs defaultActiveKey="libros" id="adminProfile" className="mb-3">
+                                <Tabs
+                                    id="adminProfile"
+                                    className="mb-3"
+                                    activeKey={keyTab}
+                                    onSelect={(k) => handleKeyTab(k)}                                    
+                                >
                                     <Tab eventKey="libros" title="Libros">
-                                        <TabBooks bookCollection={bookcollection} value={value} handleChange={handleChange} handleEdit={handleEdit}/>
+                                        <TabBooks bookCollection={bookcollection} value={value} handleChange={handleChange} handleEdit={handleEdit} />
                                     </Tab>
                                     <Tab eventKey="usuarios" title="Usuarios">
-                                        <h5>numero2</h5>
+                                        <TableUsers />
+                                    </Tab>
+                                    <Tab eventKey="categorias" title="Categorias">
+                                        <TabCategories />
                                     </Tab>
                                     <Tab eventKey="profile" title="Perfil">
                                         <TabAdminProfile />

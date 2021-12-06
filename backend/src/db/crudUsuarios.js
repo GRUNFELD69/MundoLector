@@ -1,5 +1,21 @@
 const db = require('./firebaseConnection.js');
 
+function getUsers(callback){
+    return db.collection('Usuarios').get()
+    .then(refDoc => {
+        const users = [];
+        refDoc.forEach(doc => {
+            tmpUser = doc.data();
+            tmpUser.id = doc.id;
+            users.push(tmpUser);
+        });
+        callback(users);
+    })
+    .catch(err => {
+        callback('Error getting documents', err);
+    });
+}
+
 function getUser(id, callback){
     return db.collection('Usuarios').doc(id).get()
     .then(doc => {
@@ -45,20 +61,20 @@ function deleteUser(id, callback){
     });
 }
 
-function searchUser(username, callback){
-    return db.collection('Usuarios').where('username', '==', username).get()
-    .then(userName => {
-        if (userName.empty) {
-            callback('No such user!');
+function searchUser(nombreusuario, callback){
+    return db.collection('Usuarios').where('nombreUsuario', '==', nombreusuario).get()
+    .then(refDoc => {
+        if (refDoc.empty) {
+            callback('No such user! Probando la consulta');
         }
         else {
-            //console.log(userName.docs[0].data());
-            /*var arrayUsers = [];
-            userName.forEach(doc => {                
-                arrayUsers.push(doc.data());
-            })    */        
-            //callback(username.docs.map(doc => doc.data()));
-            callback(userName.docs[0].data());
+            var arrayUsers = [];
+            refDoc.forEach(doc => {
+                var tmpUser = doc.data(); 
+                tmpUser.id = doc.id;
+                arrayUsers.push(tmpUser);
+            })          
+            callback(arrayUsers[0]);
         }
     })
     .catch(err => {
@@ -67,6 +83,7 @@ function searchUser(username, callback){
 }
 
 module.exports = {
+    getUsers,
     getUser,
     addUser,
     updateUserTotal,
